@@ -1,0 +1,17 @@
+body{
+    background-color: rgba(236, 240, 241, 1.0);
+}
+
+.navbar-links{
+    display: inline;
+    display: flex;
+    background-color: #f3e7a6;
+    padding: 2em 2em;
+    margin-top: 0;
+}
+
+.navbar-links a {
+    padding: 0 4rem;
+    font-size: 2rem;
+    text-color: black;
+}
