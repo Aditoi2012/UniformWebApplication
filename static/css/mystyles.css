@@ -1,17 +1,39 @@
-body{
+* {
+    font-family: 'Manrope', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
     background-color: rgba(236, 240, 241, 1.0);
+}
+
+body{
+    /*background-color: rgba(236, 240, 241, 1.0);*/
 }
 
 .navbar-links{
     display: inline;
     display: flex;
-    background-color: #f3e7a6;
     padding: 2em 2em;
     margin-top: 0;
 }
 
 .navbar-links a {
-    padding: 0 4rem;
+    padding: 0 8rem;
     font-size: 2rem;
     text-color: black;
+}
+
+.navbar-links img {
+
+}
+
+.messageTitle {
+    font-size: 3rem;
+}
+
+@media screen and (min-width: 321px) and (max-width: 480px){
+.navbar-links a {
+    padding: 0 1.5rem;
+    font-size: 1rem;
+}
 }

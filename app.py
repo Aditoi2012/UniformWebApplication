@@ -8,5 +8,8 @@ def home():
 @app.route('/cart')
 def cart():
     return render_template('cart.html')
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 app.run(host='0.0.0.0', debug=True)
