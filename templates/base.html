@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en">
-<link href="{{ url_for('static', filename='css/mystyles.css') }}" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description">
+    <link href="{{ url_for('static', filename='css/mystyles.css') }}" rel="stylesheet">
     <title>{% block title %}{% endblock %}</title>
 </head>
 
@@ -12,7 +13,9 @@
         <div class = 'menu-wrap'>
             <img src = 'static/images/logo3.0.png' class = 'logo-img' alt="School Logo">
             <input type="checkbox" id="checkbox">
+            <nav>
             {% include 'nav.html' %}
+            </nav>
             <label for="checkbox">
                 <i><img src = 'static/images/menuicon.png' class = 'menu-icon' alt="Menu Icon"></i>
             </label>
