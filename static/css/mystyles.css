@@ -5,6 +5,10 @@
    font-family: sans-serif;
 }
 
+body{
+    background-color: rgba(236, 240, 241, 1.0);
+}
+
 header {
    height: 70px;
    background-color: #22292F;
@@ -40,6 +44,13 @@ nav ul {
    list-style-type: none;
    max-height: 0;
    overflow:hidden;
+   transition: all 0.5s;
+}
+
+nav h1 {
+    max-height: 0;
+    overflow:hidden;
+    color: #DAE1E7;
 }
 
 nav ul li {
@@ -66,5 +77,35 @@ nav ul li a:hover, nav ul li a:focus {
    max-height: 200px;
    padding: 15px 0;
    transition: all 0.5s;
+}
+
+@media (min-width: 768px) {
+    .menu-icon {
+        display: none;
+    }
+
+    nav {
+        position: relative;
+        top: -10px;
+        background-color: transparent;
+    }
+
+    nav ul {
+        max-height: 70px;
+        padding: 15px 0;
+        text-align: right;
+    }
+
+    nav ul li {
+        display: inline-flex;
+        padding-left: 20px;
+    }
+
+    nav h1 {
+        max-height: 70px;
+        /*display:inline-flex;*/
+        text-align: center;
+        margin-right: 0;
+    }
 }
 
