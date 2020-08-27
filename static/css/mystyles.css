@@ -20,10 +20,13 @@ header {
    /*justify-content: space-evenly;*/
    justify-content: space-between;
    padding: 0 15px;
-
-
 }
 
+.menu-wrap h1{
+    visibility: hidden;
+    color: #DAE1E7;
+
+}
 
 #burger-menu {
    display: initial;
@@ -56,11 +59,11 @@ nav ul {
    transition: all 0.5s;
 }
 
-nav h1 {
-    max-height: 0;
-    overflow:hidden;
-    color: #DAE1E7;
-}
+/*nav h1 {*/
+/*    max-height: 0;*/
+/*    overflow:hidden;*/
+/*    */
+/*}*/
 
 nav ul li {
    padding: 0 15px;
@@ -88,20 +91,30 @@ nav ul li a:hover, nav ul li a:focus {
    transition: all 0.5s;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 850px) {
     /*.menu-wrap{*/
     /*}*/
-   #burger-menu {
+    #burger-menu {
       display: none;
-   }
+    }
+    .menu-wrap * {
+        margin: auto;
+    }
 
-
+    .menu-wrap h1{
+        visibility: visible;
+        display: flex;
+        margin: auto auto;
+        color: white;
+    }
     .menu-icon {
         display: none;
     }
 
     nav {
-        position: relative;
+        position: initial;
+
+        /*position: relative;*/
         top: -10px;
         background-color: transparent;
        width: fit-content;
@@ -110,6 +123,8 @@ nav ul li a:hover, nav ul li a:focus {
 
     nav ul {
         max-height: 70px;
+        /*display: flex;*/
+        /*margin: auto auto;*/
         /*padding: 15px 0;*/
         text-align: right;
     }
