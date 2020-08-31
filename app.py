@@ -1,5 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, session, redirect
+import sqlite3
+from sqlite3 import Error
+from flask_bcrypt import Bcrypt
 
+bcrypt = Bcrypt(app)
 app = Flask(__name__)
 
 @app.route('/')
