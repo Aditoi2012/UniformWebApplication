@@ -3,8 +3,8 @@ import sqlite3
 from sqlite3 import Error
 from flask_bcrypt import Bcrypt
 
-bcrypt = Bcrypt(app)
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 
 @app.route('/')
 def home():
