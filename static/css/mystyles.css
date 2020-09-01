@@ -28,7 +28,19 @@ header {
     font-size: 1.5em;
     display: flex;
     margin: auto auto;
+}
+.menu-wrap h1 a{
+    text-decoration: none;
+}
 
+.menu-wrap h1 a:hover,.menu-wrap h1 a:focus{
+    color: #eb6f4a;
+    text-decoration: none;
+}
+
+.menu-wrap h1 a:visited{
+    color: floralwhite;
+    text-decoration: none;
 }
 
 #burger-menu {
@@ -183,5 +195,59 @@ nav ul li a:hover, nav ul li a:focus {
         padding-left: 20px;
     }
 
+}
+
+.product-box img {
+    /*max-width:200px;*/
+}
+
+.products {
+    position: relative;
+    top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.product-box {
+    /*width: 13vw;*/
+    width: 32%;
+    /*float: left;*/
+    /*display: table-cell;*/
+    /*padding: 0.5rem;*/
+    /*margin: 1vw;*/
+    border: 1px solid rgba(189, 195, 199, 1.0);
+    color: rgba(44, 62, 80, 1.0);
+    margin-bottom: 0.5rem;
+}
+
+.product-box-heading {
+    padding: 0.5rem;
+}
+
+.product-box-image {
+    height: 150px;
+    overflow: hidden;
+}
+
+.product-box-info {
+    padding: 0.5rem;
+
+}
+
+.product-box h3 {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.product-box p {
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+}
+
+.product-box a {
+    border: 1px solid tomato;
+    padding: 0.3rem;
+    text-align: right;
 }
 
