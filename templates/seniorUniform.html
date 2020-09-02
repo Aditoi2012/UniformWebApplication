@@ -13,4 +13,27 @@
 {%endblock%}
 
 
-{% block main %}{% endblock %}
+{% block main %}
+
+<div class="products">
+    {% for seniorUniform in seniorProducts %}
+    <div class="product-box">
+        <div class="product-box-heading">
+            <h3>{{ seniorUniform[0] }}</h3>
+        </div>
+        <div class="product-box-image">
+            <img src="static/images/{{ seniorUniform[3] }}.jpg" alt="{{ seniorUniform[1]}}">
+        </div>
+        <div class="product-box-info">
+            <p>{{ seniorUniform[1] }} </p>
+            <p><strong>Sizes available: </strong>{{ seniorUniform[2] }}</p>
+            <p><strong>Price: </strong>${{ seniorUniform[4] }}</p>
+<!--            {% if logged_in %}-->
+            <a href="/addtocart/{{ seniorUniform[5] }}">Add to cart &raquo;</a>
+<!--            {% endif %}-->
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
