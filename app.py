@@ -35,7 +35,14 @@ def juniorUniform():
 
 @app.route('/seniorUniform')
 def seniorUniform():
-    return render_template('seniorUniform.html')
+    con = create_connection(DB_NAME)
+    query = 'SELECT id, name, size, image, price, description FROM seniorUniform'
+    cur = con.cursor()
+    cur.execute(query)
+    seniorProduct_list = cur.fetchall()
+    con.close
+
+    return render_template('seniorUniform.html', seniorProducts=seniorProduct_list)
 
 @app.route('/cart')
 def cart():
