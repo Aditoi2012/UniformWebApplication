@@ -55,8 +55,10 @@ def contact():
 def login():
     return render_template('login.html')
 
-@app.route('/signup')
+@app.route('/signup', methods=['GET','POST'])
 def signup():
+
     return render_template('signup.html')
+
 
 app.run(host='0.0.0.0', debug=True)
