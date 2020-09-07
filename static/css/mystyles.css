@@ -7,6 +7,7 @@
 
 body{
     background-color: rgba(236, 240, 241, 1.0);
+
 }
 
 header {
@@ -63,6 +64,8 @@ header {
 nav {
    position: absolute;
    background-color: #3D4852;
+   /*background-color: #c0c0c0;*/
+   /*background-color: white;*/
    top:63px;
    left:0;
    width: 100%;
@@ -212,6 +215,7 @@ nav ul li a:hover, nav ul li a:focus {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    padding: 1em 3em;
 }
 
 .product-box {
