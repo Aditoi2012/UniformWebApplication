@@ -64,6 +64,7 @@ header {
 nav {
    position: absolute;
    background-color: #3D4852;
+   /* background-color: blue;*/
    /*background-color: #c0c0c0;*/
    /*background-color: white;*/
    top:63px;
@@ -142,66 +143,6 @@ nav ul li a:hover, nav ul li a:focus {
     transition: all 0.5s;
 }
 
-
-
-
-/*.item-nav{*/
-/*    background-color: rgb(211,211,211);*/
-/*    display: flex;*/
-/*}*/
-
-/*.item-nav ul {*/
-/*    display: inline-flex;*/
-/*    margin: auto auto*/
-/*}*/
-
-/*For bigger devices*/
-
-@media (min-width: 850px) {
-    /*.menu-wrap{*/
-    /*}*/
-    #burger-menu {
-      display: none;
-    }
-    .menu-wrap * {
-        margin: auto;
-    }
-
-    .menu-wrap h1{
-        visibility: visible;
-        display: flex;
-        margin: auto auto;
-        color: floralwhite;
-    }
-    .menu-icon {
-        display: none;
-    }
-
-    nav {
-        position: initial;
-
-        /*position: relative;*/
-        top: -10px;
-        background-color: transparent;
-        width: fit-content;
-
-    }
-
-    nav ul {
-        max-height: 70px;
-        /*display: flex;*/
-        /*margin: auto auto;*/
-        /*padding: 15px 0;*/
-        text-align: right;
-    }
-
-    nav ul li {
-        display: inline-flex;
-        padding-left: 20px;
-    }
-
-}
-
 /*For the items on sale*/
 
 .product-box img {
@@ -213,14 +154,16 @@ nav ul li a:hover, nav ul li a:focus {
     z-index: -1;
     top: 80px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    flex-direction: column;
+    /*flex-wrap: wrap;*/
+    /*justify-content: space-evenly;*/
     padding: 1em 3em;
+    align-items: center;
 }
 
 .product-box {
     /*width: 13vw;*/
-    width: 32%;
+    width:100%;
     /*float: left;*/
     /*display: table-cell;*/
     /*padding: 0.5rem;*/
@@ -302,3 +245,116 @@ nav ul li a:hover, nav ul li a:focus {
     padding: 0.3rem;
     width: 100%;
 }
+
+
+/*.item-nav{*/
+/*    background-color: rgb(211,211,211);*/
+/*    display: flex;*/
+/*}*/
+
+/*.item-nav ul {*/
+/*    display: inline-flex;*/
+/*    margin: auto auto*/
+/*}*/
+
+/*For bigger devices*/
+
+@media (min-width: 850px) {
+    /*.menu-wrap{*/
+    /*}*/
+    #burger-menu {
+      display: none;
+    }
+    .menu-wrap * {
+        margin: auto;
+    }
+
+    .menu-wrap h1{
+        visibility: visible;
+        display: flex;
+        margin: auto auto;
+        color: floralwhite;
+    }
+    .menu-icon {
+        display: none;
+    }
+
+    nav {
+        position: initial;
+
+        /*position: relative;*/
+        top: -10px;
+        background-color: transparent;
+        width: fit-content;
+
+    }
+
+    nav ul {
+        max-height: 70px;
+        /*display: flex;*/
+        /*margin: auto auto;*/
+        /*padding: 15px 0;*/
+        text-align: right;
+    }
+
+    nav ul li {
+        display: inline-flex;
+        padding-left: 20px;
+    }
+
+    .products {
+    position: relative;
+    z-index: -1;
+    top: 80px;
+    display: flex;
+    flex-direction: unset;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 1em 3em;
+}
+
+    .product-box {
+    /*width: 13vw;*/
+    width: 32%;
+    /*float: left;*/
+    /*display: table-cell;*/
+    /*padding: 0.5rem;*/
+    /*margin: 1vw;*/
+    border: 1px solid rgba(189, 195, 199, 1.0);
+    color: rgba(44, 62, 80, 1.0);
+    margin-bottom: 0.5rem;
+    }
+
+    .product-box-heading {
+    padding: 0.5rem;
+    }
+
+    .product-box-image {
+        height: 150px;
+        overflow: hidden;
+    }
+
+    .product-box-info {
+        padding: 0.5rem;
+
+    }
+
+    .product-box h3 {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .product-box p {
+        font-size: 0.8rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .product-box a {
+        border: 1px solid tomato;
+        padding: 0.3rem;
+        text-align: right;
+    }
+
+}
+
+/*For the items on sale*/

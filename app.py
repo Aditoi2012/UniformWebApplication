@@ -17,7 +17,6 @@ def create_connection(db_file):
         print(e)
     return None
 
-
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -59,6 +58,5 @@ def login():
 def signup():
 
     return render_template('signup.html')
-
 
 app.run(host='0.0.0.0', debug=True)
