@@ -205,26 +205,37 @@ nav ul li a:hover, nav ul li a:focus {
 
 /*For the signup*/
 
+.register{
+    text-align: center;
+    margin-top: 2em;
+}
+
 .myform {
-    width: 50%;
+    /*width: 50%;*/
     margin: auto;
-    padding-top: 3rem;
+    /*padding-top: 3rem;*/
+    padding:0 16px;
+    width: 100%;
+    margin-bottom: 1.5rem;
+
+
 }
 
 .form-group {
     padding-top: 3rem;
+    text-align:left;
 }
 
 .form-label {
-    width: 50%;
+    /*width: 50%;*/
     /*float: left;*/
     padding: 0.3rem;
     margin: auto;
-    text-align: center;
+    /*text-align: center;*/
 }
 
 .form-element {
-    width: 70%;
+    /*width: 70%;*/
     /*float: left;*/
     margin: auto;
 }
@@ -242,8 +253,23 @@ nav ul li a:hover, nav ul li a:focus {
 
 
 .form-group input {
-    padding: 0.3rem;
+    padding: 0.7rem;
     width: 100%;
+    margin-top: 0.7rem;
+}
+
+.button-login{
+  background-color: #4CAF50;
+  border: 1px solid rgba(189, 195, 199, 1.0);
+  color: white;
+  padding: 0.3rem 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border: 1px solid rgba(189, 195, 199, 1.0);
+  margin-left: 3em;
+  margin-right: 3em;
 }
 
 
@@ -302,6 +328,8 @@ nav ul li a:hover, nav ul li a:focus {
         padding-left: 20px;
     }
 
+    /*For the product page...still need to delete the repetitive stuff*/
+
     .products {
     position: relative;
     z-index: -1;
@@ -353,6 +381,49 @@ nav ul li a:hover, nav ul li a:focus {
         border: 1px solid tomato;
         padding: 0.3rem;
         text-align: right;
+    }
+
+    /*  For the signup page  */
+    .myform {
+    width: 50%;
+    margin: auto;
+    /*padding-top: 3rem;*/
+    margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+        padding-top: 3rem;
+    }
+
+    .form-label {
+        width: 50%;
+        /*float: left;*/
+        padding: 0.3rem;
+        margin: auto;
+        text-align: center;
+    }
+
+    .form-element {
+        width: 70%;
+        /*float: left;*/
+        margin: auto;
+    }
+
+    .button-group {
+        margin-top: 4rem;
+        text-align: center;
+    }
+
+    .button-group input {
+        padding: 0.3rem 0.5rem ;
+        margin-left: 3rem;
+        margin-right:3rem;
+    }
+
+
+    .form-group input {
+        padding: 0.3rem;
+        width: 100%;
     }
 
 }

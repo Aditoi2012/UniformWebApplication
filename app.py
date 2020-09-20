@@ -56,6 +56,37 @@ def login():
 
 @app.route('/signup', methods=['GET','POST'])
 def signup():
+    # if is_logged_in():
+    #     return redirect('/')
+
+    if request.method == 'POST':
+        print(request.form)
+        fname = request.form.get('fname').strip().title()
+        lname = request.form.get('lname').strip().title()
+        email = request.form.get('email').strip().lower()
+        password = request.form.get('password')
+        password2 = request.form.get('password2')
+
+        if password != password2:
+            return redirect('/signup?error=Passwords+dont+match')
+
+        if len(password) < 8:
+            return redirect('/signup?error=Password+must+be+8+characters+or+more')
+
+        hashed_password = bcrypt.generate_password_hash(password)
+        con = create_connection(DB_NAME)
+        query = "INSERT INTO customer(id, fname, lname, email, password) " \
+                "VALUES(NULL,?,?,?,?)"
+
+        cur = con.cursor()  # You need this line next
+        try:
+            cur.execute(query, (fname, lname, email, hashed_password))  # this line actually executes the query
+        except sqlite3.IntegrityError:
+            return redirect('/signup?error=Email+is+already+used')
+
+        con.commit()
+        con.close()
+        return redirect('/login')
 
     return render_template('signup.html')
 
