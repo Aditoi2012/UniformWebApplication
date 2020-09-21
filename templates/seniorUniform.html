@@ -28,9 +28,9 @@
             <p>{{ seniorUniform[1] }} </p>
             <p><strong>Sizes available: </strong>{{ seniorUniform[2] }}</p>
             <p><strong>Price: </strong>${{ seniorUniform[4] }}</p>
-<!--            {% if logged_in %}-->
-            <a href="/addtocart/{{ seniorUniform[5] }}">Add to cart &raquo;</a>
-<!--            {% endif %}-->
+            {% if logged_in %}
+            <a href="/cart/{{ seniorUniform[0] }}">Add to cart &raquo;</a>
+            {% endif %}
         </div>
     </div>
     {% endfor %}

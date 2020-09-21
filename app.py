@@ -7,7 +7,7 @@ DB_NAME = "uniform.db"
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
-app.secret_key = 'a'
+app.secret_key = 'xmbcvjadsfklasfksajdf'
 
 def create_connection(db_file):
     try:
@@ -19,7 +19,7 @@ def create_connection(db_file):
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('home.html',logged_in=is_logged_in())
 
 @app.route('/juniorUniform')
 def juniorUniform():
@@ -30,7 +30,7 @@ def juniorUniform():
     juniorProduct_list = cur.fetchall()
     con.close
 
-    return render_template('juniorUniform.html', juniorProducts=juniorProduct_list)
+    return render_template('juniorUniform.html', juniorProducts=juniorProduct_list, logged_in=is_logged_in())
 
 @app.route('/seniorUniform')
 def seniorUniform():
@@ -41,23 +41,67 @@ def seniorUniform():
     seniorProduct_list = cur.fetchall()
     con.close
 
-    return render_template('seniorUniform.html', seniorProducts=seniorProduct_list)
+    return render_template('seniorUniform.html', seniorProducts=seniorProduct_list,logged_in=is_logged_in())
 
-@app.route('/cart')
-def cart():
-    return render_template('cart.html')
+@app.route('/addtocart/<productid>')
+def cart(productid):
+    print('Add {} to cart'.format(productid))
+    return redirect('request.referrer')
+
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
 
-@app.route('/login')
+@app.route('/login', methods=["GET", "POST"])
 def login():
-    return render_template('login.html')
+    if is_logged_in():
+        return redirect('/')
+
+    if request.method == "POST":
+        email = request.form['email'].strip().lower()
+        password = request.form['password'].strip()
+
+        query = """SELECT id, fname, password FROM customer WHERE email = ?"""
+        con = create_connection(DB_NAME)
+        cur = con.cursor()
+        cur.execute(query, (email,))
+        user_data = cur.fetchall()
+        con.close()
+
+        try:
+            userid = user_data[0][0]
+            firstname = user_data[0][1]
+            db_password = user_data[0][2]
+        except IndexError:
+            return redirect("/login?error=Email+invalid+or+password+incorrect")
+
+        # check if the password is incorrect for that email address
+
+        if not bcrypt.check_password_hash(db_password, password):
+            return redirect(request.referrer + "?error=Email+invalid+or+password+incorrect")
+
+        session['email'] = email
+        session['userid'] = userid
+        session['firstname'] = firstname
+        session['cart'] = []
+        print(session)
+        return redirect('/')
+
+    return render_template('login.html', logged_in=is_logged_in())
+
+def is_logged_in():
+    if session.get("email") is None:
+        print("not logged in")
+        return False
+    else:
+        print("logged in")
+        return True
+
 
 @app.route('/signup', methods=['GET','POST'])
 def signup():
-    # if is_logged_in():
-    #     return redirect('/')
+    if is_logged_in():
+        return redirect('/')
 
     if request.method == 'POST':
         print(request.form)
@@ -89,5 +133,12 @@ def signup():
         return redirect('/login')
 
     return render_template('signup.html')
+
+@app.route('/logout')
+def logout():
+    print(list(session.keys()))
+    [session.pop(key) for key in list(session.keys())]
+    print(list(session.keys()))
+    return redirect('/?message=See+you+next+time!')
 
 app.run(host='0.0.0.0', debug=True)
