@@ -43,14 +43,17 @@ def seniorUniform():
 
     return render_template('seniorUniform.html', seniorProducts=seniorProduct_list,logged_in=is_logged_in())
 
+
 @app.route('/addtocart/<productid>')
 def cart(productid):
     print('Add {} to cart'.format(productid))
     return redirect('request.referrer')
 
+
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
@@ -88,6 +91,7 @@ def login():
         return redirect('/')
 
     return render_template('login.html', logged_in=is_logged_in())
+
 
 def is_logged_in():
     if session.get("email") is None:
@@ -134,11 +138,13 @@ def signup():
 
     return render_template('signup.html')
 
+
 @app.route('/logout')
 def logout():
     print(list(session.keys()))
     [session.pop(key) for key in list(session.keys())]
     print(list(session.keys()))
     return redirect('/?message=See+you+next+time!')
+
 
 app.run(host='0.0.0.0', debug=True)
