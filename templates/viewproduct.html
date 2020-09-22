@@ -6,7 +6,7 @@
     <div class = smallContainer>
         <div class = viewitem>
             <div class = productinfo>
-                <img src = 'static/images/python-test.jpg' class = 'productimage' alt="Product image">
+                <img src = {{url_for('static', filename = 'images/python-test.jpg')}} class = 'productimage' alt="Product image">
             </div>
             <div class = productinfo>
                 {% for juniorUniform in productData %}
