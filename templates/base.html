@@ -11,14 +11,14 @@
 <body>
     <header class = 'menu'>
         <div class = 'menu-wrap'>
-            <a class = 'skip-link' href="/"><img src = 'static/images/logo3.0.png' class = 'logo-img' alt="School Logo"></a>
+            <a class = 'skip-link' href="/"><img src = {{url_for('static', filename = 'images/logo3.0.png')}} class = 'logo-img' alt="School Logo"></a>
             <h1><a href="/">WC Uniform Shop</a></h1>
             <input type="checkbox" id="checkbox">
             <nav>
             {% include 'nav.html' %}
             </nav>
             <label id="burger-menu" for="checkbox">
-                <i><img src = 'static/images/menuicon.png' class = 'menu-icon' alt="Menu Icon"></i>
+                <i><img src = {{url_for('static', filename = 'images/menuicon.png')}} class = 'menu-icon' alt="Menu Icon"></i>
             </label>
         </div>
         {%block product%}
