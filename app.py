@@ -43,11 +43,21 @@ def seniorUniform():
 
     return render_template('seniorUniform.html', seniorProducts=seniorProduct_list,logged_in=is_logged_in())
 
+@app.route('/viewitem/<productid>')
+def viewitem(productid):
+    query = """SELECT name, size, image, price, description FROM juniorUniform WHERE id = ? """
+    con = create_connection(DB_NAME)
+    cur = con.cursor()
+    cur.execute(query, (productid,))
+    product_data = cur.fetchall()
+    print(product_data)
+    con.close()
+    return render_template('viewproduct.html',productData = product_data)
 
-@app.route('/addtocart/<productid>')
-def cart(productid):
-    print('Add {} to cart'.format(productid))
-    return redirect('request.referrer')
+# @app.route('/addtocart/<productid>')
+# def cart(productid):
+#     print('Add {} to cart'.format(productid))
+#     return redirect(request.referrer)
 
 
 @app.route('/contact')
