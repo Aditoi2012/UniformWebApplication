@@ -43,21 +43,36 @@ def seniorUniform():
 
     return render_template('seniorUniform.html', seniorProducts=seniorProduct_list,logged_in=is_logged_in())
 
-@app.route('/viewitem/<productid>')
-def viewitem(productid):
-    query = """SELECT name, size, image, price, description FROM juniorUniform WHERE id = ? """
-    con = create_connection(DB_NAME)
-    cur = con.cursor()
-    cur.execute(query, (productid,))
-    product_data = cur.fetchall()
-    size = product_data[0][1]
-    # x = ["123", "456.678", "abc.def.ghi"]
-    print(size)
-    sizes = size.split(",")
-    print(sizes)
-    print(product_data)
-    con.close()
-    return render_template('viewproduct.html',productData = product_data,logged_in=is_logged_in())
+@app.route('/viewitem/<productid>/<uniformType>')
+def viewitem(productid,uniformType):
+    if uniformType == 'junioruniform':
+        query = """SELECT name, size, image, price, description FROM juniorUniform WHERE id = ? """
+        con = create_connection(DB_NAME)
+        cur = con.cursor()
+        cur.execute(query, (productid,))
+        product_data = cur.fetchall()
+        # size = product_data[0][1]
+        # x = ["123", "456.678", "abc.def.ghi"]
+        # print(size)
+        size = product_data[0][1].split(",")
+        print(size)
+        print(product_data)
+        con.close()
+        # print(x)
+        return render_template('viewproduct.html',productData = product_data,logged_in=is_logged_in(),sizes=size,uniform=uniformType)
+    else:
+        query = """SELECT name, size, image, price, description FROM seniorUniform WHERE id = ? """
+        con = create_connection(DB_NAME)
+        cur = con.cursor()
+        cur.execute(query, (productid,))
+        product_data = cur.fetchall()
+        size = product_data[0][1].split(",")
+        print(size)
+        print(product_data)
+        con.close()
+        return render_template('viewproduct.html', productData=product_data, logged_in=is_logged_in(), sizes=size,
+                               uniform=uniformType)
+
 
 # @app.route('/addtocart/<productid>')
 # def cart(productid):

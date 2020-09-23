@@ -204,10 +204,20 @@ nav ul li a:hover, nav ul li a:focus {
 }
 
 .product-box a {
-    border: 1px solid tomato;
-    padding: 0.3rem;
-    text-align: right;
+    /*border: 1px solid tomato;*/
+    /*padding: 0.3rem;*/
+    /*text-align: right;*/
+    display: table;
+    margin: auto auto;
+    background-color: #4CAF50;
+    /*border: 1px solid rgba(189, 195, 199, 1.0);*/
+    color: white;
+    padding: 0.3rem 0.5rem;
+    text-align: center;
+    text-decoration: none;
 }
+
+
 
 /*For the signup*/
 
@@ -223,8 +233,6 @@ nav ul li a:hover, nav ul li a:focus {
     padding:0 16px;
     width: 100%;
     margin-bottom: 1.5rem;
-
-
 }
 
 .form-group {
@@ -344,6 +352,15 @@ nav ul li a:hover, nav ul li a:focus {
   margin-left: 3em;
 }
 
+.return-button{
+    background-color: firebrick;
+    /*border: 1px solid rgba(189, 195, 199, 1.0);*/
+    color: white;
+    padding: 0.3rem 0.5rem;
+    text-align: center;
+    text-decoration: none;
+}
+
 /*.item-nav{*/
 /*    background-color: rgb(211,211,211);*/
 /*    display: flex;*/
@@ -448,11 +465,11 @@ nav ul li a:hover, nav ul li a:focus {
         margin-bottom: 0.3rem;
     }
 
-    .product-box a {
-        border: 1px solid tomato;
-        padding: 0.3rem;
-        text-align: right;
-    }
+    /*.product-box a {*/
+    /*    border: 1px solid tomato;*/
+    /*    padding: 0.3rem;*/
+    /*    text-align: right;*/
+    /*}*/
 
     /*  For the signup page  */
     .myform {
