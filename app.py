@@ -50,9 +50,14 @@ def viewitem(productid):
     cur = con.cursor()
     cur.execute(query, (productid,))
     product_data = cur.fetchall()
+    size = product_data[0][1]
+    # x = ["123", "456.678", "abc.def.ghi"]
+    print(size)
+    sizes = size.split(",")
+    print(sizes)
     print(product_data)
     con.close()
-    return render_template('viewproduct.html',productData = product_data)
+    return render_template('viewproduct.html',productData = product_data,logged_in=is_logged_in())
 
 # @app.route('/addtocart/<productid>')
 # def cart(productid):
