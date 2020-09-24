@@ -9,19 +9,21 @@
                 <img src = {{url_for('static', filename = 'images/python-test.jpg')}} class = 'productimage' alt="Product image">
             </div>
             <div class = productinfo>
-                {%if uniform == "junioruniform"%}
+
                     {% for juniorUniform in productData %}
                     <h1>{{juniorUniform[0]}}</h1>
                     <h4>${{ juniorUniform[3] }} EA</h4>
-                    <select>
+
+                    <form action='/addtocart' method= 'post'>
+                    <select name = 'size'>
                         {% for sizeType in sizes %}
                             <option>{{sizeType}} </option>
                         {%endfor%}
                     </select>
 
                     <div class = test>
-                    <input type = 'number' value = '1'>
-                    <a href="" class = button-vproduct>Add to Cart</a>
+                    <input type = 'number' value = '1' name = 'quantity'>
+                    <a href="javascript:{}" onclick="this.closest('form').submit();return false;" class = button-vproduct>Add to Cart</a>
                     </div>
 
                     <h3>Product Details</h3>
@@ -29,34 +31,38 @@
                     <p>{{ juniorUniform[4] }}</p>
                     {% endfor %}
                     <br>
-                    <a href="/juniorUniform" class = return-button>Go back</a>
-                {%else%}
-                    {% for seniorUniform in productData %}
-                    <h1>{{seniorUniform[0]}}</h1>
-                    <h4>${{ seniorUniform[3] }} EA</h4>
+                    {%if uniform == 'junioruniform'%}
+                        <a href="/juniorUniform" class = return-button>Go back</a>
+                    {%else%}
+                        <a href="/seniorUniform" class = return-button>Go back</a>
+                    {%endif%}
 
-                    <form action='/addtocart' method= 'post'>
-                        <select name = 'size'>
-                            {% for sizeType in sizes %}
-                                <option>{{sizeType}} </option>
-                            {%endfor%}
-                        </select>
+<!--                    {% for seniorUniform in productData %}-->
+<!--                    <h1>{{seniorUniform[0]}}</h1>-->
+<!--                    <h4>${{ seniorUniform[3] }} EA</h4>-->
 
-                        <div class = test>
-                        <input type = 'number' value = '1' name='quantity'>
-                        <a href="javascript:{}" onclick="this.closest('form').submit();return false;" class = button-vproduct>Add to Cart</a>
-<!--                        <input type="submit" value="Add to Cart" class = button-vproduct>-->
-                        </div>
-                    </form>
+<!--                    <form action='/addtocart' method= 'post'>-->
+<!--                        <select name = 'size'>-->
+<!--                            {% for sizeType in sizes %}-->
+<!--                                <option>{{sizeType}} </option>-->
+<!--                            {%endfor%}-->
+<!--                        </select>-->
 
-                        <h3>Product Details</h3>
-                        <br>
-                        <p>{{ seniorUniform[4] }}</p>
-                        {% endfor %}
-                        <br>
-                        <a href="/seniorUniform" class = return-button>Return</a>
+<!--                        <div class = test>-->
+<!--                        <input type = 'number' value = '1' name='quantity'>-->
+<!--                        <a href="javascript:{}" onclick="this.closest('form').submit();return false;" class = button-vproduct>Add to Cart</a>-->
+<!--&lt;!&ndash;                        <input type="submit" value="Add to Cart" class = button-vproduct>&ndash;&gt;-->
+<!--                        </div>-->
+<!--                    </form>-->
 
-                {%endif%}
+<!--                        <h3>Product Details</h3>-->
+<!--                        <br>-->
+<!--                        <p>{{ seniorUniform[4] }}</p>-->
+<!--                        {% endfor %}-->
+<!--                        <br>-->
+<!--                        <a href="/seniorUniform" class = return-button>Return</a>-->
+
+
             </div>
         </div>
     </div>

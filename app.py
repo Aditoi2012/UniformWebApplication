@@ -24,9 +24,9 @@ def home():
 @app.route('/juniorUniform')
 def juniorUniform():
     con = create_connection(DB_NAME)
-    query = 'SELECT id, name, size, image, price, description FROM juniorUniform'
+    query = 'SELECT id, name, size, image, price, description FROM juniorUniform WHERE type = ?;'
     cur = con.cursor()
-    cur.execute(query)
+    cur.execute(query,('junior',))
     juniorProduct_list = cur.fetchall()
     con.close
 
@@ -35,9 +35,9 @@ def juniorUniform():
 @app.route('/seniorUniform')
 def seniorUniform():
     con = create_connection(DB_NAME)
-    query = 'SELECT id, name, size, image, price, description FROM seniorUniform'
+    query = 'SELECT id, name, size, image, price, description FROM juniorUniform WHERE type = ?;'
     cur = con.cursor()
-    cur.execute(query)
+    cur.execute(query,('senior',))
     seniorProduct_list = cur.fetchall()
     con.close
 
@@ -45,40 +45,44 @@ def seniorUniform():
 
 @app.route('/viewitem/<productid>/<uniformType>')
 def viewitem(productid,uniformType):
-    if uniformType == 'junioruniform':
-        query = """SELECT name, size, image, price, description FROM juniorUniform WHERE id = ? """
-        con = create_connection(DB_NAME)
-        cur = con.cursor()
-        cur.execute(query, (productid,))
-        product_data = cur.fetchall()
-        # size = product_data[0][1]
-        # x = ["123", "456.678", "abc.def.ghi"]
-        # print(size)
-        size = product_data[0][1].split(",")
-        # print(size)
-        # print(product_data)
-        con.close()
-        # print(x)
-        return render_template('viewproduct.html',productData = product_data,logged_in=is_logged_in(),sizes=size,uniform=uniformType)
-    else:
-        query = """SELECT name, size, image, price, description FROM seniorUniform WHERE id = ? """
-        con = create_connection(DB_NAME)
-        cur = con.cursor()
-        cur.execute(query, (productid,))
-        product_data = cur.fetchall()
-        size = product_data[0][1].split(",")
-        # print(size)
-        # print(product_data)
-        con.close()
-        return render_template('viewproduct.html', productData=product_data, logged_in=is_logged_in(), sizes=size,
-                               uniform=uniformType)
+    # if uniformType == 'junioruniform':
+    query = """SELECT name, size, image, price, description FROM juniorUniform WHERE id = ? """
+    con = create_connection(DB_NAME)
+    cur = con.cursor()
+    cur.execute(query, (productid,))
+    product_data = cur.fetchall()
+    # size = product_data[0][1]
+    # x = ["123", "456.678", "abc.def.ghi"]
+    # print(size)
+    size = product_data[0][1].split(",")
+    # print(size)
+    # print(product_data)
+    con.close()
+    # print(x)
+
+    return render_template('viewproduct.html',productData = product_data,logged_in=is_logged_in(),sizes=size,uniform=uniformType)
+
+
+
+# else:
+#     query = """SELECT name, size, image, price, description FROM seniorUniform WHERE id = ? """
+#     con = create_connection(DB_NAME)
+#     cur = con.cursor()
+#     cur.execute(query, (productid,))
+#     product_data = cur.fetchall()
+#     size = product_data[0][1].split(",")
+#     # print(size)
+#     # print(product_data)
+#     con.close()
+#     return render_template('viewproduct.html', productData=product_data, logged_in=is_logged_in(), sizes=size,
+#                            uniform=uniformType)
 
 
 @app.route('/addtocart', methods=['GET','POST'])
 def addtocart():
     if request.method == 'POST':
         size = request.form.get('size')
-        quantity = int(request.form.get('quantity'))
+        quantity = int((request.form.get('quantity')))
         print(quantity)
         if quantity == 0:
             print('no')
