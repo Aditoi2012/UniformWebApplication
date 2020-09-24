@@ -152,7 +152,10 @@ nav ul li a:hover, nav ul li a:focus {
 /*For the items on sale*/
 
 .product-box img {
-    /*max-width:200px;*/
+    width:90%;
+    display: block;
+    margin: auto auto;
+    max-width:265px;
 }
 
 .products {

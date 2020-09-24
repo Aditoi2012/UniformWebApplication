@@ -55,8 +55,8 @@ def viewitem(productid,uniformType):
         # x = ["123", "456.678", "abc.def.ghi"]
         # print(size)
         size = product_data[0][1].split(",")
-        print(size)
-        print(product_data)
+        # print(size)
+        # print(product_data)
         con.close()
         # print(x)
         return render_template('viewproduct.html',productData = product_data,logged_in=is_logged_in(),sizes=size,uniform=uniformType)
@@ -67,17 +67,21 @@ def viewitem(productid,uniformType):
         cur.execute(query, (productid,))
         product_data = cur.fetchall()
         size = product_data[0][1].split(",")
-        print(size)
-        print(product_data)
+        # print(size)
+        # print(product_data)
         con.close()
         return render_template('viewproduct.html', productData=product_data, logged_in=is_logged_in(), sizes=size,
                                uniform=uniformType)
 
 
-# @app.route('/addtocart/<productid>')
-# def cart(productid):
-#     print('Add {} to cart'.format(productid))
-#     return redirect(request.referrer)
+@app.route('/addtocart', methods=['GET','POST'])
+def addtocart():
+    print('yes')
+    if request.method == 'POST':
+        print(request.form.get('size'))
+        print(request.form.get('quantity'))
+        print('yes')
+        return redirect(request.referrer)
 
 
 @app.route('/contact')
@@ -117,7 +121,7 @@ def login():
         session['userid'] = userid
         session['firstname'] = firstname
         session['cart'] = []
-        print(session)
+        # print(session)
         return redirect('/')
 
     return render_template('login.html', logged_in=is_logged_in())
@@ -125,10 +129,10 @@ def login():
 
 def is_logged_in():
     if session.get("email") is None:
-        print("not logged in")
+        # print("not logged in")
         return False
     else:
-        print("logged in")
+        # print("logged in")
         return True
 
 
@@ -138,7 +142,7 @@ def signup():
         return redirect('/')
 
     if request.method == 'POST':
-        print(request.form)
+        # print(request.form)
         fname = request.form.get('fname').strip().title()
         lname = request.form.get('lname').strip().title()
         email = request.form.get('email').strip().lower()
@@ -171,9 +175,9 @@ def signup():
 
 @app.route('/logout')
 def logout():
-    print(list(session.keys()))
+    # print(list(session.keys()))
     [session.pop(key) for key in list(session.keys())]
-    print(list(session.keys()))
+    # print(list(session.keys()))
     return redirect('/?message=See+you+next+time!')
 
 
