@@ -76,10 +76,18 @@ def viewitem(productid,uniformType):
 
 @app.route('/addtocart', methods=['GET','POST'])
 def addtocart():
-    print('yes')
     if request.method == 'POST':
-        print(request.form.get('size'))
-        print(request.form.get('quantity'))
+        size = request.form.get('size')
+        quantity = int(request.form.get('quantity'))
+        print(quantity)
+        if quantity == 0:
+            print('no')
+            # need to add flash instead of this error message
+            return redirect(request.referrer + "?error=Quantity+was+0")
+
+        print(size)
+        # print(request.form.get('size'))
+        print(quantity)
         print('yes')
         return redirect(request.referrer)
 
