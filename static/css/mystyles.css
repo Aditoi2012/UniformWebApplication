@@ -10,6 +10,28 @@ body{
 
 }
 
+.main{
+    /*position: relative;*/
+    min-height: 100vh;
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    background-color: #22292F;
+    color: floralwhite;
+}
+
+.homepage-content{
+    text-align: center;
+    margin-top: 6em;
+    font-family: inherit;
+    color: #22292F;
+
+}
+
 header {
    height: 70px;
    background-color: #22292F;
@@ -155,7 +177,7 @@ nav ul li a:hover, nav ul li a:focus {
     width:90%;
     display: block;
     margin: auto auto;
-    max-width:265px;
+    max-width:150px;
 }
 
 .products {
@@ -186,10 +208,10 @@ nav ul li a:hover, nav ul li a:focus {
     padding: 0.5rem;
 }
 
-.product-box-image {
-    height: 150px;
-    overflow: hidden;
-}
+/*.product-box-image {*/
+/*    height: 150px;*/
+/*    overflow: hidden;*/
+/*}*/
 
 .product-box-info {
     padding: 0.5rem;
@@ -277,37 +299,41 @@ nav ul li a:hover, nav ul li a:focus {
 
 .button-login{
   background-color: #4CAF50;
-  border: 1px solid rgba(189, 195, 199, 1.0);
+  /*border: 1px solid rgba(189, 195, 199, 1.0);*/
   color: white;
   padding: 0.3rem 0.5rem;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
-  border: 1px solid rgba(189, 195, 199, 1.0);
+  /*border: 1px solid rgba(189, 195, 199, 1.0);*/
   margin-left: 3em;
   margin-right: 3em;
 }
 
 .productContainer{
     /*margin-top: 3em;*/
-    margin: auto;
-    max-width: 1080px;
+    /*margin: auto;*/
+    /*max-width: 1080px;*/
     padding: 0 25px;
 }
 
 .viewitem{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*flex-wrap: wrap;*/
+    /*justify-content: space-around;*/
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /*max-width: 300px;*/
+    margin: auto;
+    text-align: center;
 }
 
 .productinfo{
     flex-basis: 50%;
     min-width: 300px;
     padding: 20px;
-    text-align: center;
+    /*text-align: center;*/
 }
 
 .productinfo img{
@@ -342,26 +368,54 @@ nav ul li a:hover, nav ul li a:focus {
     margin-top: 1.5em;
 }
 
+.smallContainer p {
+    margin-bottom: 1em;
+}
+
+.button-vproduct #view{
+    margin-left: 2em;
+}
+
 .button-vproduct{
-  background-color: #4CAF50;
-  border: 1px solid rgba(189, 195, 199, 1.0);
-  color: white;
-  padding: 0.3rem 0.5rem;
-  text-align: center;
+  /*background-color: #4CAF50;*/
+  /*border: 1px solid rgba(189, 195, 199, 1.0);*/
+  /*color: white;*/
+  /*padding: 0.3rem 0.5rem;*/
+  /*text-align: center;*/
   text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  border: 1px solid rgba(189, 195, 199, 1.0);
-  margin-left: 3em;
+  /*display: inline-block;*/
+  /*font-size: 14px;*/
+  /*border: 1px solid rgba(189, 195, 199, 1.0);*/
+  /*margin-left: 3em;*/
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  /*margin-left: 2em;*/
 }
 
 .return-button{
-    background-color: firebrick;
-    /*border: 1px solid rgba(189, 195, 199, 1.0);*/
-    color: white;
-    padding: 0.3rem 0.5rem;
-    text-align: center;
-    text-decoration: none;
+    /*background-color: firebrick;*/
+    /*!*border: 1px solid rgba(189, 195, 199, 1.0);*!*/
+    /*color: white;*/
+    /*padding: 0.3rem 0.5rem;*/
+    /*text-align: center;*/
+  text-decoration: none;
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: indianred;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  margin-right: 2em;
 }
 
 /*.item-nav{*/
@@ -373,6 +427,103 @@ nav ul li a:hover, nav ul li a:focus {
 /*    display: inline-flex;*/
 /*    margin: auto auto*/
 /*}*/
+
+
+/*For the Cart*/
+/*    For the cart*/
+
+/*.trial-table{*/
+/*    overflow: scroll;*/
+/*}*/
+
+/*table {*/
+/*    border-collapse: collapse;*/
+/*    overflow: scroll;*/
+/*}*/
+
+/*.cart-table > thead {*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*.cart-table td {*/
+/*    padding: 0.2rem 1rem;*/
+/*    text-align: center;*/
+/*    border: 1px solid #ddd;*/
+/*}*/
+
+/*.cart-total {*/
+/*    font-weight: bold;*/
+/*}*/
+
+.small-container{
+    max-width: 1080px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.cart-page{
+    margin: 80px auto;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-info{
+    display: flex;
+    flex-wrap:wrap;
+}
+
+th{
+    text-align: left;
+    padding: 5px;
+    color: #fff;
+    background: #ff523b;
+    font-weight: normal;
+}
+
+td{
+    padding: 10px 5px;
+}
+
+td a{
+    text-decoration: none;
+    font-size: 12px;
+}
+
+td img{
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+}
+
+.total-price{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 3em;
+}
+
+.total-price table{
+    border-top: 3px solid #ff523b;
+    width: 100%;
+    max-width: 400px;
+}
+
+td:last-child{
+    text-align: right;
+}
+
+th:last-child{
+    text-align: right;
+
+}
+
+.cart-info p{
+    /*visibility: hidden;*/
+    display: none;
+}
 
 /*For bigger devices*/
 
@@ -492,6 +643,7 @@ nav ul li a:hover, nav ul li a:focus {
         padding: 0.3rem;
         margin: auto;
         text-align: center;
+        display: block;
     }
 
     .form-element {
@@ -522,7 +674,7 @@ nav ul li a:hover, nav ul li a:focus {
     .productContainer{
     /*margin-top: 3em;*/
     margin: auto;
-    max-width: 1080px;
+    /*max-width: 1080px;*/
     padding: 0 25px;
 }
 
@@ -531,6 +683,7 @@ nav ul li a:hover, nav ul li a:focus {
         align-items: center;
         flex-wrap: wrap;
         justify-content: space-around;
+        margin-top: 3em;
     }
 
     .productinfo{
@@ -570,6 +723,17 @@ nav ul li a:hover, nav ul li a:focus {
 
     .smallContainer h3{
         margin-top: 1.5em;
+    }
+
+    .cart-info p{
+    /*visibility: hidden;*/
+        display: inherit;
+    }
+
+    .product-data{
+        /*display: block;*/
+        /*margin: auto auto;*/
+        margin-left: 100px;
     }
 
 }

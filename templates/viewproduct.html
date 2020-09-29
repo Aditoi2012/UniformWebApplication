@@ -5,37 +5,92 @@
 <div class = 'productContainer'>
     <div class = smallContainer>
         <div class = viewitem>
+            {% for juniorUniform in productData %}
             <div class = productinfo>
-                <img src = {{url_for('static', filename = 'images/python-test.jpg')}} class = 'productimage' alt="Product image">
+                <img src = "/static/images/{{ juniorUniform[3] }}" class = 'productimage' alt="Product image">
             </div>
             <div class = productinfo>
 
-                    {% for juniorUniform in productData %}
-                    <h1>{{juniorUniform[0]}}</h1>
-                    <h4>${{ juniorUniform[3] }} EA</h4>
 
-                    <form action='/addtocart' method= 'post'>
-                    <select name = 'size'>
-                        {% for sizeType in sizes %}
-                            <option>{{sizeType}} </option>
-                        {%endfor%}
-                    </select>
 
-                    <div class = test>
-                    <input type = 'number' value = '1' name = 'quantity'>
-                    <a href="javascript:{}" onclick="this.closest('form').submit();return false;" class = button-vproduct>Add to Cart</a>
-                    </div>
 
-                    <h3>Product Details</h3>
-                    <br>
-                    <p>{{ juniorUniform[4] }}</p>
-                    {% endfor %}
-                    <br>
-                    {%if uniform == 'junioruniform'%}
-                        <a href="/juniorUniform" class = return-button>Go back</a>
-                    {%else%}
-                        <a href="/seniorUniform" class = return-button>Go back</a>
-                    {%endif%}
+                    <form action='/addtocart/{{juniorUniform[0]}}/{{juniorUniform[1]}}/{{ juniorUniform[4]}}/{{juniorUniform[3]}}' method= 'post'>
+                        <h1 name = 'id'>{{juniorUniform[1]}}</h1>
+                        <h4 name = 'price'>${{ juniorUniform[4] }} EA</h4>
+
+
+                        <select name = 'size'>
+                            {% for sizeType in sizes %}
+                                <option>{{sizeType}} </option>
+                            {%endfor%}
+                        </select>
+
+                        <div class = test>
+                        <input type = 'text' value = '1' id = 'numIpt' name = 'quantity'>
+<!--                        <a href="javascript:{}" onclick="this.closest('form').submit();return false;" class = button-vproduct>Add to Cart</a>-->
+                        </div>
+
+                        <h3>Product Details</h3>
+                        <br>
+                        <p>{{ juniorUniform[5] }}</p>
+                        {% endfor %}
+                        <br>
+                        {%if uniform == 'junioruniform'%}
+                            <a href="/juniorUniform" class = return-button>Go back</a>
+                            <a href="javascript:{}" onclick="this.closest('form').submit();return false;" class = button-vproduct id = 'view'>Add to Cart</a>
+                        {%else%}
+                            <a href="/seniorUniform" class = return-button>Go back</a>
+                            <a href="javascript:{}" onclick="this.closest('form').submit();return false;" class = button-vproduct >Add to Cart</a>
+                        {%endif%}
+                    </form>
+
+                    <script>
+
+
+                        function ForNumbers(evt){
+                            var charCode = (evt.which) ? evt.which : event.keyCode;
+
+                            if (
+                                //0~9
+                                charCode >= 48 && charCode <= 57 ||
+                                //number pad 0~9
+                                charCode >= 96 && charCode <= 105 ||
+                                //backspace
+                                charCode == 8 ||
+                                //tab
+                                charCode == 9 ||
+                                //enter
+                                charCode == 13 ||
+                                //left, right, delete..
+                                charCode >= 35 && charCode <= 46
+                            )
+                            {
+                                //make sure the new value below 20
+                                if(parseInt(this.value+String.fromCharCode(charCode), 10) <= 20)
+                                    return true;
+                            }
+
+                            evt.preventDefault();
+                            evt.stopPropagation();
+
+                            return false;
+                        }
+
+                        function isNumberKey(evt) {
+                            var charCode = (evt.which) ? evt.which : event.keyCode;
+                            console.log(charCode);
+                            if (( charCode != 189))
+                                return false;
+
+                            return true;
+                        }
+
+
+                        document.getElementById('numIpt').addEventListener('keypress', ForNumbers, false);
+                        document.getElementById('numIpt').addEventListener('keypress', isNumberKey, false);
+
+
+                    </script>
 
 <!--                    {% for seniorUniform in productData %}-->
 <!--                    <h1>{{seniorUniform[0]}}</h1>-->
@@ -61,6 +116,7 @@
 <!--                        {% endfor %}-->
 <!--                        <br>-->
 <!--                        <a href="/seniorUniform" class = return-button>Return</a>-->
+
 
 
             </div>

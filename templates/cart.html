@@ -1,4 +1,59 @@
 {% extends 'base.html' %}
 
 {% block title %}Cart{% endblock %}
-{% block main %}{% endblock %}
+
+{% block main %}
+
+<div class = 'small-container cart-page' >
+
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+<!--            <th>Size</th>-->
+<!--            <th>Price</th>-->
+            <th>Item Total</th>
+        </tr>
+
+        {% set ns=namespace(total = 0) %}
+        {% for item in cart_data %}
+
+        <tr>
+            <td>
+                <div class = 'cart-info'>
+                    <img src = "/static/images/{{ item[6] }}" alt="Product image">
+                    <div class = 'product-data'>
+                        <p>{{item[5]}}</p>
+                        <small>${{ "{:.2f}".format(item[4])}}</small>
+                        <br>
+                        <small>{{item[1]}}</small>
+                        <br>
+                        <a href="/removefromcart/{{ item[0]}}/{{item[2]}}/{{item[1]}}/{{item[3]}}">Remove</a>
+                    </div>
+                </div>
+
+            </td>
+
+            <td>{{item[2]}}</td>
+
+            <td>${{ "{:.2f}".format(item[4] * item[2]) }}</td>
+            {% set ns.total = ns.total + item[4] * item[2] %}
+<!--            <td><a href="/removefromcart/{{ item[0]}}/{{item[1]}}/{{item[2] }}">X</a></td>-->
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class = 'total-price'>
+        <table>
+            <tr>
+                <td>Total</td>
+                <td class="cart-total">${{ "{:.2f}".format(ns.total) }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <a href="/" class = button-vproduct>Back to Products</a>
+
+</div>
+
+{% endblock %}

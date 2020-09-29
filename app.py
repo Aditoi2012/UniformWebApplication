@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, session, redirect
 import sqlite3
 from sqlite3 import Error
 from flask_bcrypt import Bcrypt
+from datetime import datetime
 
 DB_NAME = "uniform.db"
 
@@ -12,6 +13,7 @@ app.secret_key = 'xmbcvjadsfklasfksajdf'
 def create_connection(db_file):
     try:
         connection = sqlite3.connect(db_file)
+        connection.execute('pragma foreign_keys=ON')
         return connection
     except Error as e:
         print(e)
@@ -45,8 +47,10 @@ def seniorUniform():
 
 @app.route('/viewitem/<productid>/<uniformType>')
 def viewitem(productid,uniformType):
+    if not is_logged_in():
+        return redirect('/login')
     # if uniformType == 'junioruniform':
-    query = """SELECT name, size, image, price, description FROM juniorUniform WHERE id = ? """
+    query = """SELECT id, name, size, image, price, description FROM juniorUniform WHERE id = ? """
     con = create_connection(DB_NAME)
     cur = con.cursor()
     cur.execute(query, (productid,))
@@ -54,7 +58,7 @@ def viewitem(productid,uniformType):
     # size = product_data[0][1]
     # x = ["123", "456.678", "abc.def.ghi"]
     # print(size)
-    size = product_data[0][1].split(",")
+    size = product_data[0][2].split(",")
     # print(size)
     # print(product_data)
     con.close()
@@ -78,23 +82,198 @@ def viewitem(productid,uniformType):
 #                            uniform=uniformType)
 
 
-@app.route('/addtocart', methods=['GET','POST'])
-def addtocart():
+@app.route('/addtocart/<productid>/<name>/<price>/<img>', methods=['GET','POST'])
+def addtocart(productid,name, price,img):
+    if not is_logged_in():
+        return redirect('/login')
+    userid = session['userid']
+    timestamp = datetime.now()
+    name = name
+    imgsrc = img
+    # print(name)
+    # print(userid)
+    # print(timestamp)
     if request.method == 'POST':
+        try:
+            productid = int(productid)
+            price = int(price)
+            quantity = int((request.form.get('quantity')))
+        except ValueError:
+            print('{} is not an integer'.format(productid))
+            return redirect('/?error=Numbers+were+not+used')
+        # print(price)
+        # print(request.form.get('price'))
+        # productId = ((request.form.get('id')))
+        # print(productId)
+        # print(productid)
         size = request.form.get('size')
-        quantity = int((request.form.get('quantity')))
-        print(quantity)
-        if quantity == 0:
+        # print(quantity)
+        if quantity == 0 or quantity >= 21:
             print('no')
-            # need to add flash instead of this error message
             return redirect(request.referrer + "?error=Quantity+was+0")
+            # need to add flash instead of this error message
 
-        print(size)
+        query = "INSERT INTO cart(id,userid,productid, timestamp,price,size,quantity,name,img) VALUES(NULL,?,?,?,?,?,?,?,?)"
+        con = create_connection(DB_NAME)
+        cur = con.cursor()
+
+        try:
+            cur.execute(query, (userid, productid, timestamp,price,size,quantity,name,imgsrc))
+        except sqlite3.IntegrityError as e:
+            print(e)
+            print('### PROBLEM INSERTING INTO DATABASE - FOREIGN KEY ###')
+            con.close()
+            return redirect('/menu?error=Something+went+wrong')
+        con.commit()
+        con.close()
+
+
+        # print(size)
         # print(request.form.get('size'))
-        print(quantity)
-        print('yes')
+        # print(quantity)
+        # print('yes')
         return redirect(request.referrer)
 
+@app.route('/cart')
+def render_cart():
+    if not is_logged_in():
+        return redirect('/login')
+    userid = session['userid']
+    query = "SELECT productid, size, quantity,timestamp FROM cart WHERE userid=?;"
+    con = create_connection(DB_NAME)
+    cur = con.cursor()
+    cur.execute(query, (userid,))
+    print(userid)
+    unique_product_ids = cur.fetchall()
+    # product_ids = list(unique_product_ids)
+    unique_product_ids = [list(i) for i in unique_product_ids]
+    print(unique_product_ids)
+
+    if len(unique_product_ids)==0:
+        return redirect('/')
+
+    # for i in range(len(unique_product_ids)):
+    #     unique_product_ids[i] = unique_product_ids[i][0]
+    #
+    # print(unique_product_ids)
+
+    #FUCKKKK
+
+    # print(product_ids)
+    # unique_product_ids = list(set(product_ids))
+    # print(unique_product_ids)
+    #
+    # for i in range(len(unique_product_ids)):
+    #     product_count = product_ids.count(unique_product_ids[i])
+    #     unique_product_ids[i] = [unique_product_ids[i], product_count]
+    # print(unique_product_ids)
+
+    #FUCK
+
+    # query = """SELECT price, size, name, quantity FROM cart WHERE productid =?;"""
+    # for item in unique_product_ids:
+    #     print(item[0])
+    #     cur.execute(query, (item[0],))
+    #     item_details = cur.fetchall()
+    #     item.append(item_details[0][0])
+    #     item.append(item_details[0][1])
+    #     item.append(item_details[0][2])
+    #     item.append(item_details[0][3])
+    #     print(item_details)
+    # con.close()
+    #
+    #
+    # print(unique_product_ids)
+
+    # trying to figure a way to add all the quantities
+
+    # for i in range(len(unique_product_ids)):
+    #     product_count = product_ids.count(unique_product_ids[i])
+    #     unique_product_ids[i] = [unique_product_ids[i], product_count]
+    # print('yes')
+    # print(unique_product_ids)
+    # print('no')
+
+    # FUCK MAYBE I DONT NEED ITJFESJBK,FDSA.ADSFK.FDSAJK.
+
+    # print(unique_product_ids[0][0][1])
+    #
+    # for i in range(len(unique_product_ids)):
+    #     qty = unique_product_ids[i][0][2]*unique_product_ids[i][1]
+    #     id_product = unique_product_ids[i][0][0]
+    #     size = unique_product_ids[i][0][1]
+    #     unique_product_ids[i] = [id_product,qty,size]
+    #
+    # print(unique_product_ids)
+
+    # FUCK MAYBE I DONT NEED ITJFESJBK,FDSA.ADSFK.FDSAJK.
+
+    query = """SELECT price, name,img FROM cart WHERE productid =?;"""
+    for item in unique_product_ids:
+        print(item[0])
+        cur.execute(query, (item[0],))
+        item_details = cur.fetchall()
+        print(item_details)
+        item.append(int(item_details[0][0]))
+        item.append(item_details[0][1])
+        item.append(item_details[0][2])
+
+
+        print(item_details)
+    con.close()
+
+    print(unique_product_ids)
+
+    return render_template('cart.html', cart_data=unique_product_ids, logged_in=is_logged_in())
+
+
+
+
+    # trying to figure out a way to add all the quantities
+
+    # for i in range(len(unique_product_ids)):
+    #     id = unique_product_ids[i][0]
+    #     qty = unique_product_ids[i][1]
+    #     for q in range(len(unique_product_ids)-1):
+    #         # print(id)
+    #         if id == unique_product_ids[q+1][0]:
+    #             totalqty = qty + unique_product_ids[q+1][1]
+    #         print(unique_product_ids[i][0])
+
+
+
+
+    # print(product_quantity)
+
+
+    # unique_product_ids = list(set(product_ids))
+    # # print(unique_product_ids)
+    # for i in range(len(unique_product_ids)):
+    #     product_count = product_ids.count(unique_product_ids[i])
+    #     unique_product_ids[i] = [unique_product_ids[i], product_count]
+    # print(product_count)
+    # print(unique_product_ids)
+
+@app.route('/removefromcart/<productid>/<quantity>/<size>/<timestamp>')
+def remove_from_cart(productid,quantity,size,timestamp):
+    if not is_logged_in():
+        return redirect('/login')
+    print('fuck')
+    userid = session['userid']
+    print(userid)
+    print('fuck')
+    print('yes')
+    print(productid)
+    print(quantity)
+    print(size)
+    # print('fuck')
+    query = """DELETE FROM cart WHERE (userid, productid,timestamp, size,quantity) = (?,?,?,?,?);"""
+    con = create_connection(DB_NAME)
+    cur = con.cursor()
+    cur.execute(query, (userid, productid,timestamp,size,quantity))
+    con.commit()
+    con.close()
+    return redirect('/cart')
 
 @app.route('/contact')
 def contact():
