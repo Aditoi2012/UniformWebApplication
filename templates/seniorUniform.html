@@ -7,7 +7,6 @@
     <ul>
         <li><a href="/seniorUniform">Senior</a></li>
         <li><a href="/juniorUniform">Junior</a></li>
-<!--        <li><a href="/">Both</a></li>-->
     </ul>
 </div>
 {%endblock%}
@@ -19,17 +18,16 @@
     {% for seniorUniform in seniorProducts %}
     <div class="product-box">
         <div class="product-box-heading">
-            <h3>{{ seniorUniform[0] }}</h3>
+            <h3>{{  seniorUniform[1] }}</h3>
         </div>
         <div class="product-box-image">
             <img src="static/images/{{ seniorUniform[3] }}" alt="{{ seniorUniform[1]}}">
         </div>
         <div class="product-box-info">
-            <p>{{ seniorUniform[1] }} </p>
             <p><strong>Sizes available: </strong>{{ seniorUniform[2] }}</p>
             <p><strong>Price: </strong>${{ seniorUniform[4] }}</p>
             {% if logged_in %}
-            <a href="/viewitem/{{seniorUniform[0]}}/senioruniform" class="viewItemButton">View Item&raquo;</a>
+            <a href="/viewitem/{{seniorUniform[0]}}/seniorUniform" class="viewItemButton">View Item&raquo;</a>
             {% endif %}
         </div>
     </div>

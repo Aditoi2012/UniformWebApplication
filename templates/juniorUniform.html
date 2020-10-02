@@ -19,17 +19,16 @@
     {% for juniorUniform in juniorProducts %}
     <div class="product-box">
         <div class="product-box-heading">
-            <h3>{{ juniorUniform[0] }}</h3>
+            <h3>{{ juniorUniform[1] }}</h3>
         </div>
         <div class="product-box-image">
             <img src="static/images/{{ juniorUniform[3] }}" alt="{{ juniorUniform[1]}}">
         </div>
         <div class="product-box-info">
-            <p>{{ juniorUniform[1] }} </p>
             <p><strong>Sizes available: </strong>{{ juniorUniform[2] }}</p>
             <p><strong>Price: </strong>${{ juniorUniform[4] }}</p>
             {% if logged_in %}
-            <a href="/viewitem/{{juniorUniform[0]}}/junioruniform" class = 'viewItemButton'>View Item&raquo;</a>
+            <a href="/viewitem/{{juniorUniform[0]}}/juniorUniform" class = 'viewItemButton'>View Item&raquo;</a>
             {% endif %}
         </div>
     </div>

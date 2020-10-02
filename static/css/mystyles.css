@@ -15,14 +15,6 @@ body{
     min-height: 100vh;
 }
 
-.footer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem;
-    background-color: #22292F;
-    color: floralwhite;
-}
 
 .homepage-content{
     text-align: center;
@@ -87,9 +79,6 @@ header {
 nav {
    position: absolute;
    background-color: #3D4852;
-   /* background-color: blue;*/
-   /*background-color: #c0c0c0;*/
-   /*background-color: white;*/
    top:63px;
    left:0;
    width: 100%;
@@ -104,12 +93,6 @@ nav ul {
     position: relative;
     z-index: 2;
 }
-
-/*nav h1 {*/
-/*    max-height: 0;*/
-/*    overflow:hidden;*/
-/*    */
-/*}*/
 
 nav ul li {
    padding: 0 15px;
@@ -129,23 +112,14 @@ nav ul li a:hover, nav ul li a:focus {
 
 
 .product-nav {
-   /*display: flex;*/
-    /*margin: auto auto;*/
-   /*justify-content: space-evenly;*/
-   /*justify-content: space-between;*/
-   /*padding: 0 30px;*/
    position: initial;
    left:0;
    width: 100%;
     background-color: rgb(230,230,230);
-    /*background-color: red;*/
-    /*background-color: rgb(211,211,211);*/
     padding: 30px 0;
-    /*display: flex;*/
 }
 
 .product-nav ul{
-    /*display: inline-flex;*/
     display: flex;
 }
 
@@ -182,23 +156,15 @@ nav ul li a:hover, nav ul li a:focus {
 
 .products {
     position: relative;
-    /*z-index: -1;*/
     top: 80px;
     display: flex;
     flex-direction: column;
-    /*flex-wrap: wrap;*/
-    /*justify-content: space-evenly;*/
     padding: 1em 3em;
     align-items: center;
 }
 
 .product-box {
-    /*width: 13vw;*/
     width:100%;
-    /*float: left;*/
-    /*display: table-cell;*/
-    /*padding: 0.5rem;*/
-    /*margin: 1vw;*/
     border: 1px solid rgba(189, 195, 199, 1.0);
     color: rgba(44, 62, 80, 1.0);
     margin-bottom: 0.5rem;
@@ -208,14 +174,9 @@ nav ul li a:hover, nav ul li a:focus {
     padding: 0.5rem;
 }
 
-/*.product-box-image {*/
-/*    height: 150px;*/
-/*    overflow: hidden;*/
-/*}*/
-
 .product-box-info {
     padding: 0.5rem;
-
+    margin-top: 2em;
 }
 
 .product-box h3 {
@@ -229,13 +190,9 @@ nav ul li a:hover, nav ul li a:focus {
 }
 
 .product-box a {
-    /*border: 1px solid tomato;*/
-    /*padding: 0.3rem;*/
-    /*text-align: right;*/
     display: table;
-    margin: auto auto;
+    margin: 1em auto;
     background-color: #4CAF50;
-    /*border: 1px solid rgba(189, 195, 199, 1.0);*/
     color: white;
     padding: 0.3rem 0.5rem;
     text-align: center;
@@ -252,9 +209,7 @@ nav ul li a:hover, nav ul li a:focus {
 }
 
 .myform {
-    /*width: 50%;*/
     margin: auto;
-    /*padding-top: 3rem;*/
     padding:0 16px;
     width: 100%;
     margin-bottom: 1.5rem;
@@ -266,16 +221,11 @@ nav ul li a:hover, nav ul li a:focus {
 }
 
 .form-label {
-    /*width: 50%;*/
-    /*float: left;*/
     padding: 0.3rem;
     margin: auto;
-    /*text-align: center;*/
 }
 
 .form-element {
-    /*width: 70%;*/
-    /*float: left;*/
     margin: auto;
 }
 
@@ -299,32 +249,29 @@ nav ul li a:hover, nav ul li a:focus {
 
 .button-login{
   background-color: #4CAF50;
-  /*border: 1px solid rgba(189, 195, 199, 1.0);*/
+  border: 1px solid rgba(189, 195, 199, 1.0);
   color: white;
   padding: 0.3rem 0.5rem;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
-  /*border: 1px solid rgba(189, 195, 199, 1.0);*/
   margin-left: 3em;
   margin-right: 3em;
 }
 
+#signup{
+    background-color: black;
+    color: #fdd732;
+}
+
 .productContainer{
-    /*margin-top: 3em;*/
-    /*margin: auto;*/
-    /*max-width: 1080px;*/
     padding: 0 25px;
+    margin-bottom: 3em;
 }
 
 .viewitem{
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*flex-wrap: wrap;*/
-    /*justify-content: space-around;*/
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    /*max-width: 300px;*/
     margin: auto;
     text-align: center;
 }
@@ -333,12 +280,11 @@ nav ul li a:hover, nav ul li a:focus {
     flex-basis: 50%;
     min-width: 300px;
     padding: 20px;
-    /*text-align: center;*/
 }
 
 .productinfo img{
     max-width: 100%;
-    padding: 50px 0;
+    padding: 20px 0;
 }
 
 .smallContainer h4{
@@ -348,11 +294,8 @@ nav ul li a:hover, nav ul li a:focus {
 }
 
 .smallContainer select{
-    display: block;
     padding: 10px;
-    /*margin-top: 20px;*/
-    /*margin-bottom: 20px;*/
-    margin:auto;
+    margin-left:3em;
 }
 
 .smallContainer input{
@@ -360,7 +303,7 @@ nav ul li a:hover, nav ul li a:focus {
     height: 40px;
     padding-left: 10px;
     font-size: 20px;
-    /*margin-left: 3em;*/
+    margin-left: 3em;
     margin-top: 1.5em;
 }
 
@@ -377,16 +320,7 @@ nav ul li a:hover, nav ul li a:focus {
 }
 
 .button-vproduct{
-  /*background-color: #4CAF50;*/
-  /*border: 1px solid rgba(189, 195, 199, 1.0);*/
-  /*color: white;*/
-  /*padding: 0.3rem 0.5rem;*/
-  /*text-align: center;*/
   text-decoration: none;
-  /*display: inline-block;*/
-  /*font-size: 14px;*/
-  /*border: 1px solid rgba(189, 195, 199, 1.0);*/
-  /*margin-left: 3em;*/
   border: none;
   outline: 0;
   padding: 12px;
@@ -396,15 +330,9 @@ nav ul li a:hover, nav ul li a:focus {
   cursor: pointer;
   width: 100%;
   font-size: 18px;
-  /*margin-left: 2em;*/
 }
 
 .return-button{
-    /*background-color: firebrick;*/
-    /*!*border: 1px solid rgba(189, 195, 199, 1.0);*!*/
-    /*color: white;*/
-    /*padding: 0.3rem 0.5rem;*/
-    /*text-align: center;*/
   text-decoration: none;
   border: none;
   outline: 0;
@@ -417,43 +345,6 @@ nav ul li a:hover, nav ul li a:focus {
   font-size: 18px;
   margin-right: 2em;
 }
-
-/*.item-nav{*/
-/*    background-color: rgb(211,211,211);*/
-/*    display: flex;*/
-/*}*/
-
-/*.item-nav ul {*/
-/*    display: inline-flex;*/
-/*    margin: auto auto*/
-/*}*/
-
-
-/*For the Cart*/
-/*    For the cart*/
-
-/*.trial-table{*/
-/*    overflow: scroll;*/
-/*}*/
-
-/*table {*/
-/*    border-collapse: collapse;*/
-/*    overflow: scroll;*/
-/*}*/
-
-/*.cart-table > thead {*/
-/*    font-weight: bold;*/
-/*}*/
-
-/*.cart-table td {*/
-/*    padding: 0.2rem 1rem;*/
-/*    text-align: center;*/
-/*    border: 1px solid #ddd;*/
-/*}*/
-
-/*.cart-total {*/
-/*    font-weight: bold;*/
-/*}*/
 
 .small-container{
     max-width: 1080px;
@@ -521,15 +412,12 @@ th:last-child{
 }
 
 .cart-info p{
-    /*visibility: hidden;*/
     display: none;
 }
 
 /*For bigger devices*/
 
 @media (min-width: 850px) {
-    /*.menu-wrap{*/
-    /*}*/
     #burger-menu {
       display: none;
     }
@@ -549,8 +437,6 @@ th:last-child{
 
     nav {
         position: initial;
-
-        /*position: relative;*/
         top: -10px;
         background-color: transparent;
         width: fit-content;
@@ -559,9 +445,6 @@ th:last-child{
 
     nav ul {
         max-height: 70px;
-        /*display: flex;*/
-        /*margin: auto auto;*/
-        /*padding: 15px 0;*/
         text-align: right;
     }
 
@@ -570,13 +453,7 @@ th:last-child{
         padding-left: 20px;
     }
 
-    /*For the product page...still need to delete the repetitive stuff*/
-
     .products {
-    position: relative;
-    /*z-index: -1;*/
-    top: 80px;
-    display: flex;
     flex-direction: unset;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -584,99 +461,39 @@ th:last-child{
 }
 
     .product-box {
-    /*width: 13vw;*/
     width: 32%;
-    /*float: left;*/
-    /*display: table-cell;*/
-    /*padding: 0.5rem;*/
-    /*margin: 1vw;*/
-    border: 1px solid rgba(189, 195, 199, 1.0);
-    color: rgba(44, 62, 80, 1.0);
-    margin-bottom: 0.5rem;
     }
 
-    .product-box-heading {
-    padding: 0.5rem;
-    }
 
     .product-box-image {
         height: 150px;
         overflow: hidden;
     }
 
-    .product-box-info {
-        padding: 0.5rem;
 
-    }
-
-    .product-box h3 {
-        font-size: 1.2rem;
-        text-align: center;
-    }
-
-    .product-box p {
-        font-size: 0.8rem;
-        margin-bottom: 0.3rem;
-    }
-
-    /*.product-box a {*/
-    /*    border: 1px solid tomato;*/
-    /*    padding: 0.3rem;*/
-    /*    text-align: right;*/
-    /*}*/
-
-    /*  For the signup page  */
     .myform {
     width: 50%;
-    margin: auto;
-    /*padding-top: 3rem;*/
     margin-bottom: 1.5rem;
-    }
-
-    .form-group {
-        padding-top: 3rem;
     }
 
     .form-label {
         width: 50%;
-        /*float: left;*/
         padding: 0.3rem;
-        margin: auto;
         text-align: center;
         display: block;
     }
 
     .form-element {
         width: 70%;
-        /*float: left;*/
-        margin: auto;
-    }
-
-    .button-group {
-        margin-top: 4rem;
-        text-align: center;
-    }
-
-    .button-group input {
-        padding: 0.3rem 0.5rem ;
-        margin-left: 3rem;
-        margin-right:3rem;
     }
 
 
     .form-group input {
         padding: 0.3rem;
-        width: 100%;
+        /*width: 100%;*/
     }
 
 /*    For the view item*/
-
-    .productContainer{
-    /*margin-top: 3em;*/
-    margin: auto;
-    /*max-width: 1080px;*/
-    padding: 0 25px;
-}
 
     .viewitem{
         display: flex;
@@ -686,56 +503,14 @@ th:last-child{
         margin-top: 3em;
     }
 
-    .productinfo{
-        flex-basis: 50%;
-        min-width: 300px;
-        padding: 20px;
-        text-align: center;
-    }
-
-    .productinfo img{
-        max-width: 100%;
-        padding: 50px 0;
-    }
-
-    .smallContainer h4{
-        margin: 20px 0;
-        font-size: 22px;
-        font-weight: bold;
-    }
-
-    .smallContainer select{
-        display: block;
-        padding: 10px;
-        /*margin-top: 20px;*/
-        /*margin-bottom: 20px;*/
-        margin:auto;
-    }
-
-    .smallContainer input{
-        width: 50px;
-        height: 40px;
-        padding-left: 10px;
-        font-size: 20px;
-        /*margin-left: 3em;*/
-        margin-top: 1.5em;
-    }
-
-    .smallContainer h3{
-        margin-top: 1.5em;
-    }
 
     .cart-info p{
-    /*visibility: hidden;*/
         display: inherit;
     }
 
     .product-data{
-        /*display: block;*/
-        /*margin: auto auto;*/
         margin-left: 100px;
     }
 
 }
 
-/*For the items on sale*/
